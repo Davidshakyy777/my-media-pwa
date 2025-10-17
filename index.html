@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Менің Медиаплейерім</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- iOS (қосымша жақсы көріну үшін) -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Менің Медиаплейерім</h1>
+    <button id="installBtn" class="install-btn" hidden>Орнату</button>
+  </header>
+
+  <main class="container">
+    <section class="player-card">
+      <h2>Аудио плейлист</h2>
+
+      <div class="media-wrap">
+        <div class="cover">🎵</div>
+        <div class="meta">
+          <div id="audioTitle" class="title">—</div>
+          <audio id="audio" preload="metadata"></audio>
+          <div class="controls">
+            <button id="aPrev" class="btn">⏮</button>
+            <button id="aPlay" class="btn">▶️</button>
+            <button id="aNext" class="btn">⏭</button>
+          </div>
+        </div>
+      </div>
+
+      <ul id="audioList" class="list" aria-label="Audio playlist"></ul>
+    </section>
+
+    <section class="player-card">
+      <h2>Видео плейлист</h2>
+
+      <div class="media-wrap">
+        <video id="video" width="480" height="270" controls preload="metadata"></video>
+        <div class="meta">
+          <div id="videoTitle" class="title">—</div>
+          <div class="controls">
+            <button id="vPrev" class="btn">⏮</button>
+            <button id="vPlay" class="btn">▶️</button>
+            <button id="vNext" class="btn">⏭</button>
+          </div>
+        </div>
+      </div>
+
+      <ul id="videoList" class="list" aria-label="Video playlist"></ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>© Менің Медиаплейерім</small>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
